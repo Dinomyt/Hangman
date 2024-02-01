@@ -20,21 +20,27 @@ let endBtn = document.getElementById("endBtn");
 
 let customButtons = document.querySelectorAll('.custom-button');
 
+//On first load disable all the alphabet buttons
 disableBtns();
 
+
+//Function to disable the alphabet buttons
 function disableBtns() {
     customButtons.forEach(button => {
         button.disabled = true;
     });
 }
 
+//Function to enable the alphabet buttons
 function enableBtns() {
     customButtons.forEach(button => {
         button.disabled = false;
+        //Sets the background images of the buttons to nothing incase there is an X image on it
         button.style.backgroundImage = "";
     });
 }
 
+//A for each loop that accounts for all my alphabet buttons and attach a eventlistener to all of them
 customButtons.forEach(button => {
   button.addEventListener('click', function () {
     button.disabled = true;
@@ -51,6 +57,7 @@ customButtons.forEach(button => {
         }
         else
         {
+            //If wrong guess, attach the X image to the alphabet button
             button.style.backgroundImage = "url('../imgs/x-button.png')";
             guessCount++;
         }
@@ -68,6 +75,7 @@ startBtn.addEventListener("click", function(){
 
 endBtn.addEventListener("click", function(){
     startBtn.disabled = false;
+    //Gave up, initialize game lost state
     gameLost();
 })
 
@@ -112,17 +120,21 @@ function resetGame(){
     disableBtns();
 }
 
+//Function to test if game ended in a win or a lost
 function gameEnd(){
     if (guessCount == maxGuesses)
     {
+        //We lost
         gameLost();
     }
     else if(randomWord === letterArray.join("") && randomWord != "")
     {
+        //We won
         gameWon();
     }
 }
 
+//Function for game lost state
 function gameLost(){
     endWords.textContent = "You Lost! Your word was " + randomWord;
     disableBtns();
@@ -131,6 +143,7 @@ function gameLost(){
     endBtn.disabled = true;
 }
 
+//Function for game won state
 function gameWon(){
     endWords.textContent = "You Won! Your word was " + randomWord;
     disableBtns();
