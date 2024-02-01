@@ -36,6 +36,7 @@ customButtons.forEach(button => {
         }
         else
         {
+            button.style.backgroundImage = "url('../imgs/x-button.png')";
             guessCount++;
         }
         updateGameState();
@@ -46,9 +47,12 @@ customButtons.forEach(button => {
 
 startBtn.addEventListener("click", function(){
     dataCall();
+    startBtn.disabled = true;
 })
 
 restartBtn.addEventListener("click", function(){
+    startBtn.disabled = false;
+
     resetGame();
 })
 
@@ -65,6 +69,7 @@ function dataCall(){
 
 function startGame(word){
     letterArray = [];
+    guessCount = 0;
     for(let i = 0; i < word.length; i++){
         letterArray[i] = "_";
         updateGameState();
@@ -72,6 +77,7 @@ function startGame(word){
     attempts.innerHTML = maxGuesses - guessCount;
     customButtons.forEach(button => {
         button.disabled = false;
+        button.style.backgroundImage = "";
     });
 }
 
@@ -86,8 +92,10 @@ function resetGame(){
     guessCount = 0;
     displayWord.textContent = "Display Word";
     customButtons.forEach(button => {
-        button.disabled = false;
+        button.disabled = true;
+        button.style.backgroundImage = "";
     });
+    startBtn.disabled = false;
 
     attempts.innerHTML = "";
 
