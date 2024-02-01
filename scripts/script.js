@@ -6,19 +6,34 @@ let guessCount = 0;
 
 let maxGuesses = 6;
 
+let endWords = document.getElementById("endWords");
+
+let gameBox = document.getElementById("gameBox");
+
 let attempts = document.getElementById("attempts");
 
 let displayWord = document.getElementById("displayWord");
 
 let startBtn = document.getElementById("startBtn");
 
-let restartBtn = document.getElementById("restartBtn");
+let endBtn = document.getElementById("endBtn");
 
 let customButtons = document.querySelectorAll('.custom-button');
 
-customButtons.forEach(button => {
-    button.disabled = true;
-});
+disableBtns();
+
+function disableBtns() {
+    customButtons.forEach(button => {
+        button.disabled = true;
+    });
+}
+
+function enableBtns() {
+    customButtons.forEach(button => {
+        button.disabled = false;
+        button.style.backgroundImage = "";
+    });
+}
 
 customButtons.forEach(button => {
   button.addEventListener('click', function () {
@@ -46,14 +61,14 @@ customButtons.forEach(button => {
 
 
 startBtn.addEventListener("click", function(){
+    resetGame();
     dataCall();
     startBtn.disabled = true;
 })
 
-restartBtn.addEventListener("click", function(){
+endBtn.addEventListener("click", function(){
     startBtn.disabled = false;
-
-    resetGame();
+    gameLost();
 })
 
 
@@ -75,10 +90,9 @@ function startGame(word){
         updateGameState();
     }
     attempts.innerHTML = maxGuesses - guessCount;
-    customButtons.forEach(button => {
-        button.disabled = false;
-        button.style.backgroundImage = "";
-    });
+    endWords.textContent = "";
+    enableBtns();
+    endBtn.disabled = false;
 }
 
 function updateGameState(){
@@ -90,29 +104,37 @@ function resetGame(){
     randomWord = "";
     letterArray = [];
     guessCount = 0;
-    displayWord.textContent = "Display Word";
-    customButtons.forEach(button => {
-        button.disabled = true;
-        button.style.backgroundImage = "";
-    });
+    displayWord.textContent = "";
     startBtn.disabled = false;
-
+    endWords.textContent = "";
     attempts.innerHTML = "";
-
-
+    startBtn.textContent = "Start Game";
+    disableBtns();
 }
 
 function gameEnd(){
-    //you lost the game
     if (guessCount == maxGuesses)
     {
-        alert(`You Lost! Your word was ${randomWord}`);
-        resetGame();
+        gameLost();
     }
     else if(randomWord === letterArray.join("") && randomWord != "")
     {
-        alert(`You Won! Your word was ${randomWord}`);
-        resetGame();
+        gameWon();
     }
+}
 
+function gameLost(){
+    endWords.textContent = "You Lost! Your word was " + randomWord;
+    disableBtns();
+    startBtn.textContent = "Restart";
+    startBtn.disabled = false;
+    endBtn.disabled = true;
+}
+
+function gameWon(){
+    endWords.textContent = "You Won! Your word was " + randomWord;
+    disableBtns();
+    startBtn.textContent = "Restart";
+    startBtn.disabled = false;
+    endBtn.disabled = true;
 }

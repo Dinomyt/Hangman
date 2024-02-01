@@ -9,103 +9,92 @@
 
 </head>
   <body>
-    <h1 class="text-center">Hang Man</h1>
-    <h2 id="displayWord" class="text-center">Display Word</h2>
+
     <div class="container">
-      <div class="row">
+      <h1 class="text-center">Hang Man</h1>
+      <h2 id="endWords" class="text-center"></h2>
+      <h2 id="displayWord" class="text-center"></h2>
+      <div id="gameBox" class="row">
         <div class="col-6">
           <div class="row row-align">
-            <div class="col-1">
-              <button class="custom-button" class="custom-button">A</button>
-            </div>
-            <div class="col-1">
+              <button class="custom-button">A</button>
               <button class="custom-button">B</button>
-            </div>
-            <div class="col-1">
               <button class="custom-button">C</button>
-            </div>
-            <div class="col-1">
               <button class="custom-button">D</button>
-            </div>
-            <div class="col-1">
               <button class="custom-button">E</button>
-            </div>
-            <div class="col-1">
-              <button class="custom-button">F</button>
-            </div>
+              <button class="custom-button">F</button>     
           </div>
           <div class="row row-align">
-            <div class="col-1">
+            
               <button class="custom-button">G</button>
-            </div>
-            <div class="col-1">
+            
+            
               <button class="custom-button">H</button>
-            </div>
-            <div class="col-1">
+           
+            
               <button class="custom-button">I</button>
-            </div>
-            <div class="col-1">
+
+            
               <button class="custom-button">J</button>
-            </div>
-            <div class="col-1">
+
+            
               <button class="custom-button">K</button>
-            </div>
-            <div class="col-1">
+
+            
               <button class="custom-button">L</button>
-            </div>
+
           </div>
           <div class="row row-align">
-            <div class="col-1">
+            
               <button class="custom-button">M</button>
-            </div>
-            <div class="col-1">
+            
+            
               <button class="custom-button">N</button>
-            </div>
-            <div class="col-1">
+          
+            
               <button class="custom-button">O</button>
-            </div>
-            <div class="col-1">
+         
+            
               <button class="custom-button">P</button>
-            </div>
-            <div class="col-1">
+    
+            
               <button class="custom-button">Q</button>
-            </div>
-            <div class="col-1">
+      
+            
               <button class="custom-button">R</button>
-            </div>
+            
           </div>
           <div class="row row-align">
-            <div class="col-1">
+            
               <button class="custom-button">S</button>
-            </div>
-            <div class="col-1">
+  
+            
               <button class="custom-button">T</button>
-            </div>
-            <div class="col-1">
+         
+            
               <button class="custom-button">U</button>
-            </div>
-            <div class="col-1">
+       
+            
               <button class="custom-button">V</button>
-            </div>
-            <div class="col-1">
+      
+            
               <button class="custom-button">W</button>
-            </div>
-            <div class="col-1">
+     
+            
               <button class="custom-button">X</button>
-            </div>
+     
           </div>
           <div class="row row-align">
-            <div class="col-1">
+            
               <button class="custom-button">Y</button>
-            </div>
-            <div class="col-1">
+       
+            
               <button class="custom-button">Z</button>
-            </div>
+   
           </div>
         </div>
-    
         <div class="col-6">
-          <div class="text-center">
+          <div id="attemptBox" class="text-center">
               <h1>Attempts Remaining</h1>
               <h2 id="attempts"></h2>
           </div>
@@ -113,21 +102,22 @@
 
 
       </div>
+      <br><br>
+      <div class="row d-flex justify-content-center">
+        
+        <div class="col-3 d-flex justify-content-center">
+          <button id="startBtn" type="button" class="btn btn-primary">Start Game</button>
+        </div>
+  
+        <div class="col-3 d-flex justify-content-center">
+            <button id="endBtn" type="button" class="btn btn-secondary">End Game</button>
+        </div>
+  
+      </div>
     </div>
     
 
-    <br><br>
-    <div class="row d-flex justify-content-center">
-      
-      <div class="col-3 d-flex justify-content-center">
-        <button id="startBtn" type="button" class="btn btn-primary">Start Game</button>
-      </div>
 
-      <div class="col-3 d-flex justify-content-center">
-          <button id="restartBtn" type="button" class="btn btn-secondary">End Game</button>
-      </div>
-
-    </div>
 
     
     
