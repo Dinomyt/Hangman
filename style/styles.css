@@ -1,0 +1,11 @@
+.row-align {
+    display:flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.custom-button {
+    width: 30px;
+    margin: 5px;
+    
+}
