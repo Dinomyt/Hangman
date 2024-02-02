@@ -87,7 +87,7 @@ function dataCall(){
         randomWord = data.words[rndNum];
         console.log(randomWord);
         startGame(randomWord);
-        
+
     })
 }
 
