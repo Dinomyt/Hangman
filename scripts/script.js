@@ -20,9 +20,10 @@ let endBtn = document.getElementById("endBtn");
 
 let customButtons = document.querySelectorAll('.custom-button');
 
-//On first load disable all the alphabet buttons
+//On first load disable all the alphabet buttons and hide the ui
 disableBtns();
-
+endBtn.disabled = true;
+gameBox.style.display = "none";
 
 //Function to disable the alphabet buttons
 function disableBtns() {
@@ -101,6 +102,7 @@ function startGame(word){
     endWords.textContent = "";
     enableBtns();
     endBtn.disabled = false;
+    gameBox.style.display = "";
 }
 
 function updateGameState(){
@@ -118,6 +120,8 @@ function resetGame(){
     attempts.innerHTML = "";
     startBtn.textContent = "Start Game";
     disableBtns();
+    gameBox.style.display = "";
+
 }
 
 //Function to test if game ended in a win or a lost
@@ -141,6 +145,7 @@ function gameLost(){
     startBtn.textContent = "Restart";
     startBtn.disabled = false;
     endBtn.disabled = true;
+    gameBox.style.display = "none";
 }
 
 //Function for game won state
@@ -150,4 +155,6 @@ function gameWon(){
     startBtn.textContent = "Restart";
     startBtn.disabled = false;
     endBtn.disabled = true;
+    gameBox.style.display = "none";
+
 }
